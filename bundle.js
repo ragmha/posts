@@ -30086,7 +30086,7 @@ function createPost(post) {
 
 function deletePost(key) {
   return function (dispatch) {
-    return _firebase.Posts.child(key).remove;
+    return _firebase.Posts.child(key).remove();
   };
 }
 
