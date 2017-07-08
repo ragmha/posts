@@ -16,23 +16,9 @@ export function fetchPosts() {
 }
 
 export function createPost(post) {
-  return dispatch => {
-    Posts.push(post);
-    dispatch({
-      type: CREATE_POST,
-      payload: {
-        [_.uniqueId()]: post
-      }
-    });
-  };
+  return dispatch => Posts.push(post);
 }
 
 export function deletePost(key) {
-  return dispatch =>
-    Posts.child(key).remove(() => {
-      dispatch({
-        type: DELETE_POST,
-        payload: key
-      });
-    });
+  return dispatch => Posts.child(key).remove;
 }
