@@ -25,8 +25,5 @@ export function createPost(post) {
 }
 
 export function deletePost(key) {
-  return {
-    type: DELETE_POST,
-    payload: key
-  };
+  return dispatch => Posts.child(key).remove();
 }
