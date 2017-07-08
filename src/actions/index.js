@@ -20,5 +20,5 @@ export function createPost(post) {
 }
 
 export function deletePost(key) {
-  return dispatch => Posts.child(key).remove;
+  return dispatch => Posts.child(key).remove();
 }
