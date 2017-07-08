@@ -30067,8 +30067,6 @@ var _firebase = __webpack_require__(257);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function fetchPosts() {
   return function (dispatch) {
     _firebase.Posts.on("value", function (snapshot) {
@@ -30082,22 +30080,13 @@ function fetchPosts() {
 
 function createPost(post) {
   return function (dispatch) {
-    _firebase.Posts.push(post);
-    dispatch({
-      type: _types.CREATE_POST,
-      payload: _defineProperty({}, _lodash2.default.uniqueId(), post)
-    });
+    return _firebase.Posts.push(post);
   };
 }
 
 function deletePost(key) {
   return function (dispatch) {
-    return _firebase.Posts.child(key).remove(function () {
-      dispatch({
-        type: _types.DELETE_POST,
-        payload: key
-      });
-    });
+    return _firebase.Posts.child(key).remove;
   };
 }
 
