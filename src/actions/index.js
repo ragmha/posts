@@ -16,14 +16,23 @@ export function fetchPosts() {
 }
 
 export function createPost(post) {
-  return {
-    type: CREATE_POST,
-    payload: {
-      [_.uniqueId()]: post
-    }
+  return dispatch => {
+    Posts.push(post);
+    dispatch({
+      type: CREATE_POST,
+      payload: {
+        [_.uniqueId()]: post
+      }
+    });
   };
 }
 
 export function deletePost(key) {
-  return dispatch => Posts.child(key).remove();
+  return dispatch =>
+    Posts.child(key).remove(() => {
+      dispatch({
+        type: DELETE_POST,
+        payload: key
+      });
+    });
 }
